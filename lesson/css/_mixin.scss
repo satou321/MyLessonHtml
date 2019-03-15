@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+@function per($base,$elem) {
+  @return (strip-unit($elem) / strip-unit($base)) *100%;
+}
+
+@function getFixMargin($base,$width,$length) {
+  @return ($base - $width * $length) /$length;
+}
+
+@function vAlign($base,$elem) {
+  @debug #{&} $base $elem;
+  @return $base / 2 - $elem /2;
+}
+
+$breakpoints-min: (
+  //'s':'screen and (min-width:400px)',
+        's':'screen and (min-width:421px)',
+        'm':'screen and (min-width:768px)', //iPad
+        'l':'screen and (min-width:1000px)',
+        'xl':'screen and (min-width:1200px)',
+        'x':'screen and (min-width:960px)',
+) !default;
+$breakpoints-max: (
+  //'s':'screen and (max-width:399px)',
+        's':'screen and (max-width:420px)',
+        'm':'screen and (max-width:767px)',
+        'l':'screen and (max-width:999px)',
+        'xl':'screen and (max-width:1199px)',
+        'x':'screen and (max-width:959px)',
+) !default;
+@mixin mq-max($breakpoint: m) {
+  @media #{map-get($breakpoints-max, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-min($breakpoint: m) {
+  @media #{map-get($breakpoints-min, $breakpoint)} {
+    @content;
+  }
+}
+
+
+@mixin responsive($class, $bp: $breakpoints-max) {
+  #{$class} {
+    @content;
+  }
+  @each $suffix, $value in $bp {
+    @media #{$value} {
+      #{$class}-#{$suffix} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin clf {
+  &::after {
+    content: " "; //.だとフッターの後ろにスペース開くので注意
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+

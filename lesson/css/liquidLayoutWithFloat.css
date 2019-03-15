@@ -1,0 +1,68 @@
+@charset "UTF-8";
+@import url(../css/html5doctor.css);
+ul {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+/*
+    見た目調整
+ ----------------------------------*/
+body {
+  margin: 20px;
+  color: #fff; }
+
+p {
+  font-weight: bold;
+  color: #fff; }
+
+#left, #right, #rightContainer {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+#left, #right {
+  height: 50px;
+  margin: 20px 0; }
+
+#left {
+  width: 80px;
+  padding: 20px;
+  background-color: #5875ca; }
+
+#right {
+  padding: 10px;
+  background-color: #f82481; }
+
+#rightContainer {
+  z-index: -1;
+  height: 100px;
+  background-color: #f1f1f1; }
+  #rightContainer span {
+    font-weight: bold;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: rgba(34, 34, 34, 0.84); }
+
+/* 
+   ネガティブマージンで固定可変組み合わせレイアウト
+ ----------------------------------*/
+#left {
+  float: left; }
+
+#right {
+  margin-left: 80px;
+  /*ネガティブマージンで左によった分を打ち消し*/ }
+
+#rightContainer {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin-left: -80px;
+  /*ネガティブマージン*/ }
+
+/*# sourceMappingURL=liquidLayoutWithFloat.css.map */
