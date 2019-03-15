@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+/*
+    見た目
+ ----------------------------------*/
+.a0, .a0_child, .a1, .a2 {
+  padding: 10px;
+  color: #fff;
+}
+
+.a0 {
+  font-weight: bold;
+  width: 570px;
+  height: 50px;
+  margin-bottom: 50px;
+  color: #fff;
+  background-color: black;
+}
+
+.a0_child, .a1, .a2 {
+  width: 150px;
+  height: 100px;
+  background-color: #0053ff;
+}
+
+
+.a1 {
+  margin-top: -110px;
+  margin-left: 200px;
+}
+
+.a2 {
+  margin-top: -120px;
+  margin-left: 400px;
+}
+
+/*
+    core
+ ----------------------------------*/
+.a0 {
+  opacity: 0.6;
+  //position:relative;
+  //z-index: -9999;
+}
+
+.a0_child {
+  position: absolute;
+  z-index: 9999;
+}
+
+.a1 {
+  //position: relative;
+  //z-index: 9999;
+}
+
+.a2 {
+  position: relative;
+}
+
